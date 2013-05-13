@@ -20,10 +20,17 @@ def main():
     # read in the raw tweets
     raw_tweet = tweet_file.readlines()
 
-    # create a list of tweet text
-    tweet_txt = []
     for i in range(len(raw_tweet)):
-        tweet_txt.append(json.loads(raw_tweet[i])["text"])
+        # get the text of the tweet
+        tweet_txt = json.loads(raw_tweet[i])["text"]
+        # break the tweet into words
+        tweet_txt_words = tweet_txt.split()
+        tweet_score = 0
+        # loop over the words looking up the sentiment of each word
+        for word in tweet_txt_words:
+            tweet_score += scores.get(word, 0)
+        # print the sentiment
+        print tweet_score
 
 
 if __name__ == '__main__':
