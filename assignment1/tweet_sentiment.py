@@ -30,7 +30,7 @@ def main():
         for word in tweet_txt_words:
             tweet_score += scores.get(word, 0)
         # print the sentiment
-        print tweet_score
+        print float(tweet_score)
 
 
 if __name__ == '__main__':
