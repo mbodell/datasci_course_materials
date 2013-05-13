@@ -22,7 +22,7 @@ def main():
 
     for i in range(len(raw_tweet)):
         # get the text of the tweet
-        tweet_txt = json.loads(raw_tweet[i])["text"]
+        tweet_txt = json.loads(raw_tweet[i]).get("text", "")
         # break the tweet into words
         tweet_txt_words = tweet_txt.split()
         tweet_score = 0
