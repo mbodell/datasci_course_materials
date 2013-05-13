@@ -1,4 +1,5 @@
 import sys
+import json
 
 def hw():
     print 'Hello, world!'
@@ -9,27 +10,21 @@ def lines(fp):
 def main():
     sent_file = open(sys.argv[1])
     tweet_file = open(sys.argv[2])
-    hw()
-#    lines(sent_file)
-#    lines(tweet_file)
+
+    # create a dictionary of sentiment scores
     scores = {}
     for line in sent_file:
         term, score = line.split("\t")
         scores[term] = int(score)
 
-#    tweet_txt = {}
-#    for line in 
+    # read in the raw tweets
+    raw_tweet = tweet_file.readlines()
 
-    print scores.items()
+    # create a list of tweet text
+    tweet_txt = []
+    for i in range(len(raw_tweet)):
+        tweet_txt.append(json.loads(raw_tweet[i])["text"])
 
-def foo():
-    afinnfile = open("AFINN-111.txt")
-    scores = {} # initialize an empty dictionary
-    for line in afinnfile:
-        term, score  = line.split("\t")  # The file is tab-delimited. "\t" means "tab character"
-        scores[term] = int(score)  # Convert the score to an integer.
-
-    print scores.items() # Print every (term, score) pair in the dictionary
 
 if __name__ == '__main__':
     main()
