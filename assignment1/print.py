@@ -5,5 +5,7 @@ response = urllib.urlopen("http://search.twitter.com/search.json?q=microsoft")
 
 resp = json.load(response)
 
-for i in range(10):
-  print resp["results"][i]["text"]
+results = resp["results"]
+
+for i in range(len(results)):
+  print results[i]["text"]
