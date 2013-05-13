@@ -25,8 +25,9 @@ def main():
 
     # do the sentiment calculation
     for i in range(len(raw_tweet)):
+        tweet_json = json.loads(raw_tweet[i])
         # get the text of the tweet
-        tweet_txt = json.loads(raw_tweet[i]).get("text", "").encode("UTF-8")
+        tweet_txt = tweet_json.get("text", "").encode("UTF-8")
         # break the tweet into words
         tweet_txt_words = tweet_txt.split()
         tweet_score = 0
@@ -35,6 +36,7 @@ def main():
             tweet_score += scores.get(word, 0)
         # print the sentiment
         print float(tweet_score)
+        print tweet_json.get("user",{}).get("location","").encode("UTF-8")
 
 
 if __name__ == '__main__':
