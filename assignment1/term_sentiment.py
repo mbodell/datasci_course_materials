@@ -38,7 +38,22 @@ def main():
         # print the sentiment
         tweet_scores.append(float(tweet_score))
 
-    print tweet_texts
+    new_words = {}
+    i = -1
+    for tweet in tweet_texts:
+        i = i + 1
+        for word in tweet:
+            if (scores.get(word, 6) > 5):
+                if(new_words.get(word, "abandon") != "abandon"):
+                    new_words[word].append(tweet_scores[i])
+                else:
+                    new_words[word] = []
+                    new_words[word].append(tweet_scores[i])
+
+    for word in new_words:
+        print new_words[word]
+
+                        
 
 if __name__ == '__main__':
     main()
