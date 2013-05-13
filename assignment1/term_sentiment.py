@@ -21,11 +21,13 @@ def main():
     raw_tweet = tweet_file.readlines()
 
     # get the scores for all the tweets, and all the words
+    tweet_texts = []
     tweet_scores = []
     all_words = {}
     for i in range(len(raw_tweet)):
         # get the text of the tweet
         tweet_txt = json.loads(raw_tweet[i]).get("text", "")
+        tweet_texts.append(tweet_txt)
         # break the tweet into words
         tweet_txt_words = tweet_txt.split()
         tweet_score = 0
@@ -36,7 +38,7 @@ def main():
         # print the sentiment
         tweet_scores.append(float(tweet_score))
 
-    print tweet_scores
+    print tweet_texts
 
 if __name__ == '__main__':
     main()
