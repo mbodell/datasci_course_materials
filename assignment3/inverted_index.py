@@ -16,7 +16,7 @@ def mapper(record):
     key = record[0]
     value = record[1]
     words = value.split()
-    for w in words:
+    for w in set(words):
       mr.emit_intermediate(w, key)
 
 def reducer(key, list_of_values):
