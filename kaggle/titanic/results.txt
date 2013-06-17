@@ -1,0 +1,3 @@
+First submission - 0.77512 (multivariate regression with 9)
+Second submission - 0.75598 (fewer variables - incorrectly done)
+Thrid submission - 0.76555 (fewer variables - correctly done - essentially the same as women)
